@@ -14,7 +14,7 @@ public class tk2dSprite : tk2dBaseSprite
 	Vector3[] meshVertices;
 	Vector3[] meshNormals = null;
 	Vector4[] meshTangents = null;
-	Color[] meshColors;
+	Color32[] meshColors;
 	
 	new void Awake()
 	{
@@ -64,7 +64,7 @@ public class tk2dSprite : tk2dBaseSprite
 		var sprite = collectionInst.spriteDefinitions[spriteId];
 
 		meshVertices = new Vector3[sprite.positions.Length];
-        meshColors = new Color[sprite.positions.Length];
+        meshColors = new Color32[sprite.positions.Length];
 		
 		meshNormals = new Vector3[0];
 		meshTangents = new Vector4[0];
@@ -92,7 +92,7 @@ public class tk2dSprite : tk2dBaseSprite
 		mesh.vertices = meshVertices;
 		mesh.normals = meshNormals;
 		mesh.tangents = meshTangents;
-		mesh.colors = meshColors;
+		mesh.colors32 = meshColors;
 		mesh.uv = sprite.uvs;
 		mesh.triangles = sprite.indices;
 		
@@ -110,12 +110,21 @@ public class tk2dSprite : tk2dBaseSprite
 	}
 	
 	/// <summary>
+	/// Adds a tk2dSprite as a component to the gameObject passed in, setting up necessary parameters and building geometry.
+	/// Convenience alias of tk2dBaseSprite.AddComponent<tk2dSprite>(...).
+	/// </summary>
+	public static tk2dSprite AddComponent(GameObject go, tk2dSpriteCollectionData spriteCollection, string spriteName)
+	{
+		return tk2dBaseSprite.AddComponent<tk2dSprite>(go, spriteCollection, spriteName);
+	}
+	
+	/// <summary>
 	/// Create a sprite (and gameObject) displaying the region of the texture specified.
 	/// Use <see cref="tk2dSpriteCollectionData.CreateFromTexture"/> if you need to create a sprite collection
 	/// with multiple sprites.
 	/// Convenience alias of tk2dBaseSprite.CreateFromTexture<tk2dSprite>(...)
 	/// </summary>
-	public static GameObject CreateFromTexture(Texture2D texture, tk2dRuntime.SpriteCollectionSize size, Rect region, Vector2 anchor)
+	public static GameObject CreateFromTexture(Texture texture, tk2dRuntime.SpriteCollectionSize size, Rect region, Vector2 anchor)
 	{
 		return tk2dBaseSprite.CreateFromTexture<tk2dSprite>(texture, size, region, anchor);
 	}
@@ -134,7 +143,7 @@ public class tk2dSprite : tk2dBaseSprite
 #endif
 		
 		SetColors(meshColors);
-		mesh.colors = meshColors;
+		mesh.colors32 = meshColors;
 	}
 	
 	protected void UpdateVerticesImpl()
@@ -182,7 +191,7 @@ public class tk2dSprite : tk2dBaseSprite
 			meshVertices = new Vector3[sprite.positions.Length];
 			meshNormals = (sprite.normals != null && sprite.normals.Length > 0)?(new Vector3[sprite.normals.Length]):(new Vector3[0]);
 			meshTangents = (sprite.tangents != null && sprite.tangents.Length > 0)?(new Vector4[sprite.tangents.Length]):(new Vector4[0]);
-			meshColors = new Color[sprite.positions.Length];
+			meshColors = new Color32[sprite.positions.Length];
 		}
 		SetPositions(meshVertices, meshNormals, meshTangents);
 		SetColors(meshColors);
@@ -191,7 +200,7 @@ public class tk2dSprite : tk2dBaseSprite
 		mesh.vertices = meshVertices;
 		mesh.normals = meshNormals;
 		mesh.tangents = meshTangents;
-		mesh.colors = meshColors;
+		mesh.colors32 = meshColors;
 		mesh.uv = sprite.uvs;
 		mesh.bounds = GetBounds();
         mesh.triangles = sprite.indices;

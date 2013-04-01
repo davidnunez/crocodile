@@ -163,24 +163,32 @@ public class tk2dSpriteCollectionBuilder
 		return Mathf.Max(0, basePadAmount);
 	}
 
-	static void PadTexture(Texture2D tex, int pad, bool stretchPad)
+	static void PadTexture(Texture2D tex, int pad, tk2dSpriteCollectionDefinition.Pad padMode)
 	{
 		Color bgColor = new Color(0,0,0,0);
-
+		Color c0 = bgColor, c1 = bgColor;
 		for (int y = 0; y < pad; ++y)
 		{
 			for (int x = 0; x < tex.width; ++x)
 			{
-				tex.SetPixel(x, y, stretchPad?tex.GetPixel(x, pad):bgColor);
-				tex.SetPixel(x, tex.height - 1 - y, stretchPad?tex.GetPixel(x, tex.height - 1 - pad):bgColor);
+				switch (padMode) {
+					case tk2dSpriteCollectionDefinition.Pad.Extend: c0 = tex.GetPixel(x, pad); c1 = tex.GetPixel(x, tex.height - 1 - pad); break;
+					case tk2dSpriteCollectionDefinition.Pad.TileXY: c1 = tex.GetPixel(x, pad); c0 = tex.GetPixel(x, tex.height - 1 - pad); break;
+				}
+				tex.SetPixel(x, y, c0);
+				tex.SetPixel(x, tex.height - 1 - y, c1);
 			}
 		}
 		for (int x = 0; x < pad; ++x)
 		{
 			for (int y = 0; y < tex.height; ++y)
 			{
-				tex.SetPixel(x, y, stretchPad?tex.GetPixel(pad, y):bgColor);
-				tex.SetPixel(tex.width - 1 - x, y, stretchPad?tex.GetPixel(tex.width - 1 - pad, y):bgColor);
+				switch (padMode) {
+					case tk2dSpriteCollectionDefinition.Pad.Extend: c0 = tex.GetPixel(pad, y); c1 = tex.GetPixel(tex.width - 1 - pad, y); break;
+					case tk2dSpriteCollectionDefinition.Pad.TileXY: c1 = tex.GetPixel(pad, y); c0 = tex.GetPixel(tex.width - 1 - pad, y); break;
+				}
+				tex.SetPixel(x, y, c0);
+				tex.SetPixel(tex.width - 1 - x, y, c1);
 			}
 		}
 	}
@@ -250,7 +258,7 @@ public class tk2dSpriteCollectionBuilder
 		}
 	}
 
-	static Texture2D ProcessTexture(tk2dSpriteCollection settings, bool additive, bool stretchPad, bool disableTrimming, bool isInjectedTexture, Texture2D srcTex, int sx, int sy, int tw, int th, ref SpriteLut spriteLut, int padAmount)
+	static Texture2D ProcessTexture(tk2dSpriteCollection settings, bool additive, tk2dSpriteCollectionDefinition.Pad padMode, bool disableTrimming, bool isInjectedTexture, Texture2D srcTex, int sx, int sy, int tw, int th, ref SpriteLut spriteLut, int padAmount)
 	{
 		// Can't have additive without premultiplied alpha
 		if (!settings.premultipliedAlpha) additive = false;
@@ -356,7 +364,7 @@ public class tk2dSpriteCollectionBuilder
 				}
 			}
 			
-			PadTexture(dtex, padAmount, stretchPad);
+			PadTexture(dtex, padAmount, padMode);
 			switch (textureCompression)
 			{
 			case tk2dSpriteCollection.TextureCompression.Dithered16Bit_NoAlpha:
@@ -435,6 +443,23 @@ public class tk2dSpriteCollectionBuilder
 		}	
 	}
 
+	static bool CheckSourceAssets(tk2dSpriteCollection gen)
+	{
+		string missingTextures = "";
+
+		foreach (var param in gen.textureParams) {
+			if (param.texture == null && param.name.Length > 0) {
+				missingTextures += "  Missing texture: " + param.name;
+			}
+		}
+
+		if (missingTextures.Length > 0) {
+			Debug.LogError(string.Format("Error in sprite collection '{0}'\n{1}", gen.name, missingTextures));
+		}
+
+		return missingTextures.Length == 0;
+	}
+
     public static bool Rebuild(tk2dSpriteCollection gen)
     {
 		// avoid "recursive" build being triggered by texture watcher
@@ -455,6 +480,11 @@ public class tk2dSpriteCollectionBuilder
 		currentBuild = gen;
 		gen.Upgrade(); // upgrade if necessary. could be invoked by texture watcher.
 		
+		// Check all source assets are present, fail otherwise
+		if (!CheckSourceAssets(gen)) {
+			return false;
+		}
+
 		// Get some sensible paths to work with
 		string dataDirName = GetOrCreateDataPath(gen) + "/";
 		
@@ -690,7 +720,7 @@ public class tk2dSpriteCollectionBuilder
 						diceLut.sourceTex = srcTex;
 						diceLut.isDuplicate = false; // duplicate diced textures can be chopped up differently, so don't detect dupes here
 
-						Texture2D dest = ProcessTexture(gen, gen.textureParams[i].additive, true, gen.textureParams[i].disableTrimming, false, srcTex, sx, sy, tw, th, ref diceLut, GetPadAmount(gen, i));
+						Texture2D dest = ProcessTexture(gen, gen.textureParams[i].additive, tk2dSpriteCollectionDefinition.Pad.Extend, gen.textureParams[i].disableTrimming, false, srcTex, sx, sy, tw, th, ref diceLut, GetPadAmount(gen, i));
 						if (dest)
 						{
 							diceLut.atlasIndex = numTexturesToAtlas++;
@@ -725,16 +755,13 @@ public class tk2dSpriteCollectionBuilder
 				if (!lut.isDuplicate)
 				{
 					lut.atlasIndex = numTexturesToAtlas++;
-					bool stretchPad = false;
-					if (gen.textureParams[i].pad == tk2dSpriteCollectionDefinition.Pad.Extend) stretchPad = true;
-
-					Texture2D dest = ProcessTexture(gen, gen.textureParams[i].additive, stretchPad, gen.textureParams[i].disableTrimming, false, currentTexture, 0, 0, currentTexture.width, currentTexture.height, ref lut, GetPadAmount(gen, i));
+					Texture2D dest = ProcessTexture(gen, gen.textureParams[i].additive, gen.textureParams[i].pad, gen.textureParams[i].disableTrimming, false, currentTexture, 0, 0, currentTexture.width, currentTexture.height, ref lut, GetPadAmount(gen, i));
 					if (dest == null)
 					{
 						// fall back to a tiny blank texture
 						lut.tex = new Texture2D(1, 1);
 						lut.tex.SetPixel(0, 0, new Color( 0, 0, 0, 0 ));
-						PadTexture(lut.tex, GetPadAmount(gen, i), stretchPad);
+						PadTexture(lut.tex, GetPadAmount(gen, i), gen.textureParams[i].pad);
 						lut.tex.Apply();
 
 						lut.rx = currentTexture.width / 2; lut.ry = currentTexture.height / 2;
@@ -766,7 +793,7 @@ public class tk2dSpriteCollectionBuilder
 					SpriteLut lut = new SpriteLut();
 					
 					int cy = font.flipTextureY?c.y:(fontInfo.scaleH - c.y - c.height);
-					Texture2D dest = ProcessTexture(gen, false, false, false, true,
+					Texture2D dest = ProcessTexture(gen, false, tk2dSpriteCollectionDefinition.Pad.Default, false, true,
 						font.texture, c.x, cy, c.width, c.height, 
 						ref lut, GetPadAmount(gen, -1));
 					if (dest == null)
@@ -1417,7 +1444,7 @@ public class tk2dSpriteCollectionBuilder
 				// build mesh
 				if (_lut.isSplit)
 				{
-					coll.spriteDefinitions[i].flipped = false; // each split could be rotated, but not consistently
+					coll.spriteDefinitions[i].flipped = tk2dSpriteDefinition.FlipMode.None; // each split could be rotated, but not consistently
 					
 					for (int j = 0; j < spriteLuts.Count; ++j)
 					{
@@ -1486,7 +1513,7 @@ public class tk2dSpriteCollectionBuilder
 				}
 				else if (thisTexParam.customSpriteGeometry)
 				{
-					coll.spriteDefinitions[i].flipped = atlasEntry.flipped;
+					coll.spriteDefinitions[i].flipped = atlasEntry.flipped ? tk2dSpriteDefinition.FlipMode.Tk2d : tk2dSpriteDefinition.FlipMode.None;
 					
 					List<int> indices = new List<int>();
 					foreach (var island in thisTexParam.geometryIslands)
@@ -1536,7 +1563,7 @@ public class tk2dSpriteCollectionBuilder
 				}
 				else
 				{
-					coll.spriteDefinitions[i].flipped = atlasEntry.flipped;
+					coll.spriteDefinitions[i].flipped = atlasEntry.flipped ? tk2dSpriteDefinition.FlipMode.Tk2d : tk2dSpriteDefinition.FlipMode.None;
 					
 					float x0 = _lut.rx / texWidth;
 					float y0 = _lut.ry / texHeight;

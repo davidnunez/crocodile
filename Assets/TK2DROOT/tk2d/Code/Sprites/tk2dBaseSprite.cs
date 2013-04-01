@@ -8,14 +8,48 @@ using System.Collections;
 public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollectionForceBuild
 {
 	/// <summary>
-	/// Holds a pointer to the sprite collection.
+	/// Anchor.
+	/// NOTE: The order in this enum is deliberate, to initialize at LowerLeft for backwards compatibility.
+	/// This is also the reason it is local here. Other Anchor enums are NOT compatbile. Do not cast.
 	/// </summary>
-    public tk2dSpriteCollectionData collection;
+    public enum Anchor
+    {
+		/// <summary>Lower left</summary>
+		LowerLeft,
+		/// <summary>Lower center</summary>
+		LowerCenter,
+		/// <summary>Lower right</summary>
+		LowerRight,
+		/// <summary>Middle left</summary>
+		MiddleLeft,
+		/// <summary>Middle center</summary>
+		MiddleCenter,
+		/// <summary>Middle right</summary>
+		MiddleRight,
+		/// <summary>Upper left</summary>
+		UpperLeft,
+		/// <summary>Upper center</summary>
+		UpperCenter,
+		/// <summary>Upper right</summary>
+		UpperRight,
+    }
 
 	/// <summary>
-	/// Holds a pointer to the sprite collection.
+	/// This is now private. You should use <see cref="tk2dBaseSprite.Collection">Collection</see> if you wish to read this value.
+	/// Use <see cref="tk2dBaseSprite.SwitchCollectionAndSprite">SwitchCollectionAndSprite</see> when you need to switch sprite collection.
 	/// </summary>
-	public tk2dSpriteCollectionData Collection { get { return collection; } set { collection = value; collectionInst = collection.inst; } }
+	[SerializeField]
+    private tk2dSpriteCollectionData collection;
+
+	/// <summary>
+	/// Deprecation warning: the set accessor will be removed in a future version.
+	/// Use <see cref="tk2dBaseSprite.SwitchCollectionAndSprite">SwitchCollectionAndSprite</see> when you need to switch sprite collection.
+	/// </summary>
+	public tk2dSpriteCollectionData Collection 
+	{ 
+		get { return collection; } 
+		set { collection = value; collectionInst = collection.inst; } 
+	}
 
     // This is the active instance of the sprite collection
     protected tk2dSpriteCollectionData collectionInst;
@@ -143,10 +177,43 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 			}
 		} 
 	}
+
+	/// <summary>
+	/// Sets the sprite by identifier.
+	/// </summary>
+	public void SetSprite(int newSpriteId) {
+		this.spriteId = newSpriteId;
+	}
+
+	/// <summary>
+	/// Sets the sprite by name. The sprite will be selected from the current collection.
+	/// </summary>
+	public bool SetSprite(string spriteName) {
+		int spriteId = collection.GetSpriteIdByName(spriteName, -1);
+		if (spriteId != -1) { 
+			SetSprite(spriteId);
+		}
+		return spriteId != -1;
+	}
 	
 	/// <summary>
-	/// Switchs the sprite collection and sprite.
+	/// Sets sprite by identifier from the new collection.
+	/// </summary>
+	public void SetSprite(tk2dSpriteCollectionData newCollection, int spriteId) {
+		SwitchCollectionAndSprite(newCollection, spriteId);
+	}
+
+	/// <summary>
+	/// Sets sprite by name from the new collection.
+	/// </summary>
+	public bool SetSprite(tk2dSpriteCollectionData newCollection, string spriteName) {
+		return SwitchCollectionAndSprite(newCollection, spriteName);
+	}
+
+	/// <summary>
+	/// Switches the sprite collection and sprite.
 	/// Simply set the <see cref="tk2dBaseSprite.spriteId">spriteId</see> property when you don't need to switch the sprite collection.
+	/// This will be deprecated in a future release, use SetSprite instead.
 	/// </summary>
 	/// <param name='newCollection'>
 	/// A reference to the sprite collection to switch to.
@@ -159,8 +226,8 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		bool switchedCollection = false;
 		if (Collection != newCollection)
 		{
-			Collection = newCollection;
-			collectionInst = Collection.inst;
+			collection = newCollection;
+			collectionInst = collection.inst;
 			_spriteId = -1; // force an update, but only when the collection has changed
 			switchedCollection = true;
 		}
@@ -173,6 +240,26 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		}
 	}
 	
+	/// <summary>
+	/// Switches the sprite collection and sprite.
+	/// Simply set the <see cref="tk2dBaseSprite.spriteId">spriteId</see> property when you don't need to switch the sprite collection.
+	/// This will be deprecated in a future release, use SetSprite instead.
+	/// </summary>
+	/// <param name='newCollection'>
+	/// A reference to the sprite collection to switch to.
+	/// </param>
+	/// <param name='spriteName'>
+	/// Sprite name.
+	/// </param>
+	public bool SwitchCollectionAndSprite(tk2dSpriteCollectionData newCollection, string spriteName)
+	{
+		int spriteId = newCollection.GetSpriteIdByName(spriteName, -1);
+		if (spriteId != -1) { 
+			SwitchCollectionAndSprite(newCollection, spriteId);
+		}
+		return spriteId != -1;
+	}
+
 	/// <summary>
 	/// Makes the sprite pixel perfect to the active camera.
 	/// Automatically detects <see cref="tk2dCamera"/> if present
@@ -258,9 +345,25 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	{
 		T sprite = go.AddComponent<T>();
 		sprite._spriteId = -1;
-		sprite.SwitchCollectionAndSprite(spriteCollection, spriteId);
+		sprite.SetSprite(spriteCollection, spriteId);
 		sprite.Build();
 		return sprite;
+	}
+	
+	/// <summary>
+	/// Adds a tk2dBaseSprite derived class as a component to the gameObject passed in, setting up necessary parameters
+	/// and building geometry. Shorthand using sprite name
+	/// </summary>
+	public static T AddComponent<T>(GameObject go, tk2dSpriteCollectionData spriteCollection, string spriteName) where T : tk2dBaseSprite
+	{
+		int spriteId = spriteCollection.GetSpriteIdByName(spriteName, -1);
+		if (spriteId == -1) {
+			Debug.LogError( string.Format("Unable to find sprite named {0} in sprite collection {1}", spriteName, spriteCollection.spriteCollectionName) );
+			return null;
+		}
+		else {
+			return AddComponent<T>(go, spriteCollection, spriteId);			
+		}
 	}
 	
 	protected int GetNumVertices()
@@ -305,13 +408,15 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		}
 	}
 	
-	protected void SetColors(Color[] dest)
+	protected void SetColors(Color32[] dest)
 	{
 		Color c = _color;
         if (collectionInst.premultipliedAlpha) { c.r *= c.a; c.g *= c.a; c.b *= c.a; }
+        Color32 c32 = c;
+
 		int numVertices = GetNumVertices();
 		for (int i = 0; i < numVertices; ++i)
-			dest[i] = c;
+			dest[i] = c32;
 	}
 	
 	/// <summary>
@@ -355,6 +460,19 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 		return collectionInst.spriteDefinitions[_spriteId];
 	}
 
+	/// <summary>
+	/// Gets the current sprite definition.
+	/// </summary>
+	/// <returns>
+	/// <see cref="tk2dSpriteDefinition"/> for the currently active sprite.
+	/// </returns>
+	public tk2dSpriteDefinition CurrentSprite {
+		get {
+			InitInstance();
+			return collectionInst.spriteDefinitions[_spriteId];
+		}
+	}
+
 	// Unity functions
 	public void Start()
 	{
@@ -367,7 +485,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	
 	protected virtual bool NeedBoxCollider() { return false; }
 	
-	protected void UpdateCollider()
+	protected virtual void UpdateCollider()
 	{
 		var sprite = collectionInst.spriteDefinitions[_spriteId];
 		
@@ -408,7 +526,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	}
 	
 	// This is separate to UpdateCollider, as UpdateCollider can only work with BoxColliders, and will NOT create colliders
-	protected void CreateCollider()
+	protected virtual void CreateCollider()
 	{
 		var sprite = collectionInst.spriteDefinitions[_spriteId];
 		if (sprite.colliderType == tk2dSpriteDefinition.ColliderType.Unset)
@@ -468,7 +586,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	}
 	
 #if UNITY_EDITOR
-	public void EditMode__CreateCollider()
+	public virtual void EditMode__CreateCollider()
 	{
 		// Revert to runtime behaviour when the game is running
 		if (Application.isPlaying)
@@ -536,7 +654,7 @@ public abstract class tk2dBaseSprite : MonoBehaviour, tk2dRuntime.ISpriteCollect
 	/// Use <see cref="tk2dSpriteCollectionData.CreateFromTexture"/> if you need to create a sprite collection
 	/// with multiple sprites.
 	/// </summary>
-	public static GameObject CreateFromTexture<T>(Texture2D texture, tk2dRuntime.SpriteCollectionSize size, Rect region, Vector2 anchor) where T : tk2dBaseSprite
+	public static GameObject CreateFromTexture<T>(Texture texture, tk2dRuntime.SpriteCollectionSize size, Rect region, Vector2 anchor) where T : tk2dBaseSprite
 	{
 		tk2dSpriteCollectionData data = tk2dRuntime.SpriteCollectionGenerator.CreateFromTexture(texture, size, region, anchor);
 		if (data == null)

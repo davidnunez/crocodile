@@ -2,13 +2,21 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(tk2dAnimatedSprite))]
 class tk2dAnimatedSpriteEditor : tk2dSpriteEditor
 {
 	tk2dGenericIndexItem[] animLibs = null;
 	string[] animLibNames = null;
 	bool initialized = false;
+
+	tk2dAnimatedSprite[] targetAnimSprites = new tk2dAnimatedSprite[0];
 	
+	new void OnEnable() {
+		base.OnEnable();
+		targetAnimSprites = GetTargetsOfType<tk2dAnimatedSprite>( targets );
+	}
+
 	void Init()
 	{
 		if (!initialized)
@@ -71,14 +79,17 @@ class tk2dAnimatedSpriteEditor : tk2dSpriteEditor
 			int newAnimLib = EditorGUILayout.Popup("Anim Lib", selAnimLib, animLibNames);
 			if (newAnimLib != selAnimLib)
 			{
-				sprite.anim = animLibs[newAnimLib].GetAsset<tk2dSpriteAnimation>();
-				sprite.clipId = 0;
-				
-				if (sprite.anim.clips.Length > 0)
-				{
-					// automatically switch to the first frame of the new clip
-					sprite.SwitchCollectionAndSprite(sprite.anim.clips[sprite.clipId].frames[0].spriteCollection,
-					                                 sprite.anim.clips[sprite.clipId].frames[0].spriteId);
+				Undo.RegisterUndo(targetAnimSprites, "Sprite Anim Lib");
+				foreach (tk2dAnimatedSprite spr in targetAnimSprites) {
+					spr.anim = animLibs[newAnimLib].GetAsset<tk2dSpriteAnimation>();
+					spr.clipId = 0;
+					
+					if (spr.anim.clips.Length > 0)
+					{
+						// automatically switch to the first frame of the new clip
+						spr.SwitchCollectionAndSprite(spr.anim.clips[spr.clipId].frames[0].spriteCollection,
+						                              spr.anim.clips[spr.clipId].frames[0].spriteId);
+					}
 				}
 			}
 			
@@ -116,25 +127,40 @@ class tk2dAnimatedSpriteEditor : tk2dSpriteEditor
 				int newClipId = EditorGUILayout.Popup("Clip", sprite.clipId, clipNames);
 				if (newClipId != sprite.clipId)
 				{
-					sprite.clipId = newClipId;
-					// automatically switch to the first frame of the new clip
-					sprite.SwitchCollectionAndSprite(sprite.anim.clips[sprite.clipId].frames[0].spriteCollection,
-					                                 sprite.anim.clips[sprite.clipId].frames[0].spriteId);
+					Undo.RegisterUndo(targetAnimSprites, "Sprite Anim Clip");
+					foreach (tk2dAnimatedSprite spr in targetAnimSprites) {
+						spr.clipId = newClipId;
+						// automatically switch to the first frame of the new clip
+						spr.SwitchCollectionAndSprite(spr.anim.clips[spr.clipId].frames[0].spriteCollection,
+						                              spr.anim.clips[spr.clipId].frames[0].spriteId);
+					}
 				}
 			}
 
 			// Play automatically
-			sprite.playAutomatically = EditorGUILayout.Toggle("Play automatically", sprite.playAutomatically);
-			bool oldCreateCollider = sprite.createCollider;
-			sprite.createCollider = EditorGUILayout.Toggle("Create collider", sprite.createCollider);
-			if (oldCreateCollider != sprite.createCollider)
+			bool newPlayAutomatically = EditorGUILayout.Toggle("Play automatically", sprite.playAutomatically);
+			if (newPlayAutomatically != sprite.playAutomatically) {
+				Undo.RegisterUndo(targetAnimSprites, "Sprite Anim Play Automatically");
+				foreach (tk2dAnimatedSprite spr in targetAnimSprites) {
+					spr.playAutomatically = newPlayAutomatically;
+				}
+			}
+
+			bool newCreateCollider = EditorGUILayout.Toggle("Create collider", sprite.createCollider);
+			if (newCreateCollider != sprite.createCollider)
 			{
-				sprite.EditMode__CreateCollider();
+				Undo.RegisterUndo(targetAnimSprites, "Sprite Anim Create Collider");
+				foreach (tk2dAnimatedSprite spr in targetAnimSprites) {
+					spr.createCollider = newCreateCollider;
+					spr.EditMode__CreateCollider();
+				}
 			}
 			
 			if (GUI.changed)
 			{
-				EditorUtility.SetDirty(sprite);
+				foreach (tk2dAnimatedSprite spr in targetAnimSprites) {
+					EditorUtility.SetDirty(spr);
+				}
 			}
 		}
     }
@@ -176,32 +202,39 @@ class tk2dAnimatedSpriteEditor : tk2dSpriteEditor
 		
 		tk2dGenericIndexItem[] animIndex = tk2dEditorUtility.GetOrCreateIndex().GetSpriteAnimations();
 		tk2dSpriteAnimation anim = null;
+		int clipId = -1;
 		foreach (var animIndexItem in animIndex)
 		{
 			tk2dSpriteAnimation a = animIndexItem.GetAsset<tk2dSpriteAnimation>();
 			if (a != null && a.clips != null && a.clips.Length > 0)
 			{
-				anim = a;
-				break;
+				for (int i = 0; i < a.clips.Length; ++i) {
+					if (!a.clips[i].Empty &&
+						a.clips[i].frames[0].spriteCollection != null &&
+						a.clips[i].frames[0].spriteId >= 0) {
+						clipId = i;
+						break;
+					}
+				}
+
+				if (clipId != -1) {
+					anim = a;
+					break;
+				}
 			}
 		}
 		
-		if (anim == null)
+		if (anim == null || clipId == -1)
 		{
 			EditorUtility.DisplayDialog("Create Animated Sprite", "Unable to create animated sprite as no SpriteAnimations have been found.", "Ok");
 			return;
 		}
 		
-		if (anim.clips[0].frames.Length == 0 || anim.clips[0].frames[0].spriteCollection == null)
-		{
-			EditorUtility.DisplayDialog("Create Animated Sprite", "Invalid SpriteAnimation has been found.", "Ok");
-			return;
-		}
-
 		GameObject go = tk2dEditorUtility.CreateGameObjectInScene("AnimatedSprite");
 		tk2dAnimatedSprite sprite = go.AddComponent<tk2dAnimatedSprite>();
-		sprite.SwitchCollectionAndSprite(anim.clips[0].frames[0].spriteCollection, anim.clips[0].frames[0].spriteId);
+		sprite.SwitchCollectionAndSprite(anim.clips[clipId].frames[0].spriteCollection, anim.clips[clipId].frames[0].spriteId);
 		sprite.anim = anim;
+		sprite.clipId = clipId;
 		sprite.Build();
 		
 		Selection.activeGameObject = go;

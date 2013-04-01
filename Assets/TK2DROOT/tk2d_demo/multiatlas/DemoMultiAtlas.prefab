@@ -44,51 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c7a4b4ee15890498f818262bca0312, type: 1}
   m_Name: 
   textures: []
-  textureRefs:
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
-  - {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
+  textureRefs: []
   spriteSheets:
   - texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     tilesX: 44
@@ -98,15 +54,15 @@ MonoBehaviour:
     pad: 0
     scale: {x: 0, y: 0, z: 0}
     additive: 0
-    active: 0
-    tileWidth: 0
-    tileHeight: 0
+    active: 1
+    tileWidth: 72
+    tileHeight: 110
     tileMarginX: 0
     tileMarginY: 0
     tileSpacingX: 0
     tileSpacingY: 0
     splitMethod: 0
-    version: 0
+    version: 1
     colliderType: 0
   fonts: []
   defaults:
@@ -115,6 +71,11 @@ MonoBehaviour:
     anchor: 4
     pad: 0
     colliderType: 0
+  platforms:
+  - name: 
+    spriteCollection: {fileID: 0}
+  managedSpriteCollection: 0
+  loadable: 0
   maxTextureSize: 256
   forceTextureSize: 0
   forcedTextureWidth: 1024
@@ -130,12 +91,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -144,8 +106,8 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
     spriteSheetX: 0
     spriteSheetY: 0
@@ -167,12 +129,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -181,10 +144,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 1
     spriteSheetY: 0
     extractRegion: 1
     regionX: 72
@@ -204,12 +167,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -218,10 +182,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 2
     spriteSheetY: 0
     extractRegion: 1
     regionX: 144
@@ -241,12 +205,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -255,10 +220,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 3
     spriteSheetY: 0
     extractRegion: 1
     regionX: 216
@@ -278,12 +243,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -292,10 +258,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 4
     spriteSheetY: 0
     extractRegion: 1
     regionX: 288
@@ -315,12 +281,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -329,10 +296,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 5
     spriteSheetY: 0
     extractRegion: 1
     regionX: 360
@@ -352,12 +319,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -366,10 +334,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 6
     spriteSheetY: 0
     extractRegion: 1
     regionX: 432
@@ -389,12 +357,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -403,10 +372,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 7
     spriteSheetY: 0
     extractRegion: 1
     regionX: 504
@@ -426,12 +395,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -440,10 +410,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 8
     spriteSheetY: 0
     extractRegion: 1
     regionX: 576
@@ -463,12 +433,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -477,10 +448,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 9
     spriteSheetY: 0
     extractRegion: 1
     regionX: 648
@@ -500,12 +471,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -514,10 +486,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 10
     spriteSheetY: 0
     extractRegion: 1
     regionX: 720
@@ -537,12 +509,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -551,10 +524,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 11
     spriteSheetY: 0
     extractRegion: 1
     regionX: 792
@@ -574,12 +547,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -588,10 +562,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 12
     spriteSheetY: 0
     extractRegion: 1
     regionX: 864
@@ -611,12 +585,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -625,10 +600,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 13
     spriteSheetY: 0
     extractRegion: 1
     regionX: 936
@@ -648,12 +623,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -662,10 +638,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 14
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1008
@@ -685,12 +661,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -699,10 +676,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 15
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1080
@@ -722,12 +699,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -736,10 +714,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 16
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1152
@@ -759,12 +737,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -773,10 +752,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 17
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1224
@@ -796,12 +775,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -810,10 +790,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 18
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1296
@@ -833,12 +813,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -847,10 +828,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 19
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1368
@@ -870,12 +851,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -884,10 +866,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 20
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1440
@@ -907,12 +889,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -921,10 +904,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 21
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1512
@@ -944,12 +927,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -958,10 +942,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 22
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1584
@@ -981,12 +965,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -995,10 +980,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 23
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1656
@@ -1018,12 +1003,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1032,10 +1018,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 24
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1728
@@ -1055,12 +1041,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1069,10 +1056,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 25
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1800
@@ -1092,12 +1079,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1106,10 +1094,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 26
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1872
@@ -1129,12 +1117,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1143,10 +1132,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 27
     spriteSheetY: 0
     extractRegion: 1
     regionX: 1944
@@ -1166,12 +1155,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1180,10 +1170,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 28
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2016
@@ -1203,12 +1193,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1217,10 +1208,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 29
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2088
@@ -1240,12 +1231,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1254,10 +1246,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 30
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2160
@@ -1277,12 +1269,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1291,10 +1284,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 31
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2232
@@ -1314,12 +1307,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1328,10 +1322,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 32
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2304
@@ -1351,12 +1345,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1365,10 +1360,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 33
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2376
@@ -1388,12 +1383,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1402,10 +1398,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 34
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2448
@@ -1425,12 +1421,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1439,10 +1436,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 35
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2520
@@ -1462,12 +1459,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1476,10 +1474,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 36
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2592
@@ -1499,12 +1497,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1513,10 +1512,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 37
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2664
@@ -1536,12 +1535,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1550,10 +1550,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 38
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2736
@@ -1573,12 +1573,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1587,10 +1588,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 39
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2808
@@ -1610,12 +1611,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1624,10 +1626,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 40
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2880
@@ -1647,12 +1649,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1661,10 +1664,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 41
     spriteSheetY: 0
     extractRegion: 1
     regionX: 2952
@@ -1684,12 +1687,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1698,10 +1702,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 42
     spriteSheetY: 0
     extractRegion: 1
     regionX: 3024
@@ -1721,12 +1725,13 @@ MonoBehaviour:
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: f38c1e9651d69654c87ea0956466e36d, type: 1}
     materialId: 0
     anchor: 4
     anchorX: 36
     anchorY: 55
     overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
     customSpriteGeometry: 0
     geometryIslands: []
     dice: 0
@@ -1735,10 +1740,10 @@ MonoBehaviour:
     pad: 0
     extraPadding: 0
     source: 0
-    fromSpriteSheet: 1
-    hasSpriteSheetId: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 1
     spriteSheetId: 0
-    spriteSheetX: 0
+    spriteSheetX: 43
     spriteSheetY: 0
     extractRegion: 1
     regionX: 3096
@@ -1770,10 +1775,11 @@ MonoBehaviour:
   useTk2dCamera: 0
   targetHeight: 640
   targetOrthoSize: 1
+  globalScale: 1
   pixelPerfectPointSampled: 0
   filterMode: 1
   wrapMode: 1
-  userDefinedTextureSettings: 0
+  userDefinedTextureSettings: 1
   mipmapEnabled: 0
   anisoLevel: 1
   physicsDepth: .100000001
@@ -1782,7 +1788,8 @@ MonoBehaviour:
   padAmount: -1
   autoUpdate: 1
   editorDisplayScale: 1
-  version: 0
+  version: 3
+  assetName: 
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
