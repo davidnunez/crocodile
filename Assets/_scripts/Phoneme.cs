@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Phoneme : MonoBehaviour {
-	public static string[] VOICES = new string[] {"filip_dirty_test"}; // TODO: this could probably go elsewhere 
+	public static string[] VOICES = new string[] {"filip_dirty_test", "phoneme sets (1)"}; // TODO: this could probably go elsewhere 
 	public string letter;
 	public string voice;
 	public AudioSource audioSource;
@@ -11,7 +11,7 @@ public class Phoneme : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		voice = VOICES[0];
+		voice = VOICES[1];
 		audioSource = Camera.mainCamera.GetComponent<AudioSource>();
 		rewardClip = Resources.Load("_sfx/jump") as AudioClip;
 

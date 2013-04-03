@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Director : MonoBehaviour {
 	
+
+	int[] validLetters = {2,4,6,12,13,14,16,19,20};
+
 	public int numberOfLetters = 4;
 	public Letter[] letters;
 	public Phoneme phoneme;
@@ -55,7 +58,7 @@ public class Director : MonoBehaviour {
 			
 			GameObject go = (GameObject)Instantiate (Resources.Load ("_prefabs/LetterPrefab"), newPosition,Quaternion.identity);	
 			Letter letter = go.GetComponent<Letter>();
-			letter.Randomize();
+			letter.Randomize(validLetters);
 			string textureName = "font_sets/" + letter.typeface + "/" + letter.filename();
 			
 			Texture2D tex = Resources.Load(textureName) as Texture2D;
