@@ -1,0 +1,26 @@
+SO IT DEPENDS HOW WE'LL DO IT. 
+SEEMS TO ME NOW WE SHOULDN'T HAVE SETS ALREADY 
+MIXED WITH ALL VARIOUS PROPERTIES. 
+RATHER CREATE FONT SETS (TYPEFACE VARIETIES), AND 
+MAKE SELECTIONS A LA RANDOM ETC...
+CHANGES THE INHERITANCE STRUCTURE
+
+
+
+class letterSet {
+letterSetName text
+letterSetID - not sure. number or text
+uppercase boolean
+italic boolean
+color boolean
+typaface text
+serif boolean
+(bold boolean)
+}
+
+class letter {
+(letterSetName)
+lettersetID - not sure. number or text
+letter - could be either the letter itself or nuber (1-26)
+letterID - not sure. number or text
+}
