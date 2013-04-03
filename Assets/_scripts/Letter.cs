@@ -59,15 +59,18 @@ public class Letter : MonoBehaviour {
 	}
 	
 	public void Randomize(int[] validLetters) {
-		letter = AlphabetMap.getLetter(validLetters[Random.Range (0, validLetters.Length)]);	
-		typeface = TYPEFACES[Random.Range(0, TYPEFACES.Length)];
-		
-		
-		uppercase = Random.Range(0,2) == 1;
-
+				
+		SetLetter (validLetters[Random.Range (0, validLetters.Length)]);		
 	
 	}
 	
+	
+	public void SetLetter(int letterIndex) {
+		letter = AlphabetMap.getLetter(letterIndex);
+		typeface = TYPEFACES[Random.Range(0, TYPEFACES.Length)];
+		uppercase = Random.Range(0,2) == 1;
+
+	}
 
 	public void Fall() {
 		StartCoroutine("DoFall");

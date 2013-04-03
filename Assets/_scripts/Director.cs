@@ -52,12 +52,18 @@ public class Director : MonoBehaviour {
 	}
 
 	void setupLetters() {
+		Shuffle(validLetters);
+		
 		for (int i = 0; i < numberOfLetters; i++) {		
 			Vector3 newPosition = new Vector3(200+200*i, 900, 0);
 			
 			GameObject go = (GameObject)Instantiate (Resources.Load ("_prefabs/LetterPrefab"), newPosition,Quaternion.identity);	
 			Letter letter = go.GetComponent<Letter>();
-			letter.Randomize(validLetters);
+			
+			
+			letter.SetLetter(validLetters[i]);			
+			
+//			letter.Randomize(validLetters);
 			string textureName = "font_sets/" + letter.typeface + "/" + letter.filename();
 			
 			Texture2D tex = Resources.Load(textureName) as Texture2D;
@@ -120,5 +126,22 @@ public class Director : MonoBehaviour {
 		}
 		
 	}
+	
+	
+	
+	public static void Shuffle<T>(T[] array)
+    {
+        System.Random random = new System.Random();
+ 
+        for (int i = 0; i < array.Length; i++)
+        {
+            int idx = random.Next(i, array.Length);
+ 
+            //swap elements
+            T tmp = array[i];
+            array[i] = array[idx];
+            array[idx] = tmp;
+        }  
+    }
 
 }
