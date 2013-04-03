@@ -14,10 +14,10 @@ public class Director : MonoBehaviour {
 		phoneme = phonemeObject.GetComponent<Phoneme>();
 	}
 	void OnEnable() {
-    //    FingerGestures.OnFingerDown += FingerGestures_OnFingerDown;
+        FingerGestures.OnFingerDown += FingerGestures_OnFingerDown;
 	}
 	void OnDisable() {
-    //    FingerGestures.OnFingerDown -= FingerGestures_OnFingerDown;
+        FingerGestures.OnFingerDown -= FingerGestures_OnFingerDown;
 	}	
 	void Start() {
 		setupLetters();
@@ -38,7 +38,8 @@ public class Director : MonoBehaviour {
 
 			} else {
 				phoneme.PlayClip();
-				Destroy(selectedObject);
+				letter.Fall();
+				//Destroy(selectedObject);
 			}
 		} else {
 			phoneme.PlayClip();

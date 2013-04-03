@@ -26,10 +26,10 @@ public class alligator : MonoBehaviour {
 	}
 	
 	void OnEnable() {
-        FingerGestures.OnFingerDown += FingerGestures_OnFingerDown;
+    //    FingerGestures.OnFingerDown += FingerGestures_OnFingerDown;
 	}
 	void OnDisable() {
-        FingerGestures.OnFingerDown -= FingerGestures_OnFingerDown;
+    //    FingerGestures.OnFingerDown -= FingerGestures_OnFingerDown;
 	}	
 	
 	

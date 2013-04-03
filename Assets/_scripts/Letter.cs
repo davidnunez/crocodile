@@ -28,10 +28,10 @@ public class Letter : MonoBehaviour {
 	//public bool italic;
 	//public bool bold;
 	//public bool serif;
-	float lerpPosition = 0.0f;
+	public float lerpPosition = 0.0f;
 	public float lerpTime  = 10.0f; // This is the number of seconds the Lerp will take
-	Vector3 start;
-	Vector3 end; 
+	public Vector3 start;
+	public Vector3 end; 
 
 	
 	// LetterSet[] letterSets; // TODO: Implement Letter Set
@@ -58,7 +58,19 @@ public class Letter : MonoBehaviour {
 
 	}
 
+	public void Fall() {
+		
+		Debug.Log ("FALL");
+		StartCoroutine("DoFall");
+	}
 	
+	IEnumerator DoFall() {
+		start = transform.position;
+		lerpPosition = 0.0f;
+		lerpTime = 1.0f;
+		yield return new WaitForSeconds(1.0f);
+		Destroy(gameObject);
+	}
 	
 	public string filename() {
 		string highlow;
