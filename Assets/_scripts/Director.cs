@@ -58,18 +58,13 @@ public class Director : MonoBehaviour {
 			Vector3 newPosition = new Vector3(200+200*i, 900, 0);
 			
 			GameObject go = (GameObject)Instantiate (Resources.Load ("_prefabs/LetterPrefab"), newPosition,Quaternion.identity);	
-			Letter letter = go.GetComponent<Letter>();
-			
-			
+			Letter letter = go.GetComponent<Letter>();			
 			letter.SetLetter(validLetters[i]);			
-			
-//			letter.Randomize(validLetters);
 			string textureName = "font_sets/" + letter.typeface + "/" + letter.filename();
 			
 			Texture2D tex = Resources.Load(textureName) as Texture2D;
 
 			go.renderer.material.mainTexture = tex;
-			
 			letters[i] = letter;
 		}
 	}
@@ -81,12 +76,18 @@ public class Director : MonoBehaviour {
 		yield return new WaitForSeconds(1.5f);
 		Destroy(letter.gameObject);
 		yield return new WaitForSeconds(2.5f);
-		setupLetters();
-		setupPhoneme();
-		StartCoroutine("SpeakPhoneme");
+		NextRound ();
 
 	}
+
+	void NextRound() {
+		clearLetters();
+		setupLetters();
+		setupPhoneme();
+		StartCoroutine("SpeakPhoneme");	
 		
+	}
+	
 	void clearLetters() {
 		for (int i = 0; i < numberOfLetters; i++) {	
 			if (letters[i] && letters[i].letter != phoneme.letter) {
@@ -104,7 +105,18 @@ public class Director : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		for (int i = 0; i < numberOfLetters; i++) {	
+			if (letters[i] && letters[i].letter == phoneme.letter) {
+				if (letters[i].lerpPosition > 1.0f) {
+					Debug.Log ("FAILED");	
+					StopCoroutine("SpeakPhoneme");
+					alligator.Dunk();
+					phoneme.PlayFailClip();
+
+					NextRound();
+				}
+			}
+		}
 	}
 	
 	// utility method to raycast into the scene from the input screen position, looking for a rigidbody

@@ -127,5 +127,11 @@ public class alligator : MonoBehaviour {
             return null;
         return hit.collider.gameObject;
     }
+	
+	
+	public void Dunk() {
+		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 0.0f, "time", 0.25f, "easetype", "easeInOutSine"));
+		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 120.0f, "time", 0.5f, "easetype", "easeInOutSine", "delay", 0.25f));
 
+	}
 }
