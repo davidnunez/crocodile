@@ -31,10 +31,11 @@ public class Director : MonoBehaviour {
 	
 	void FingerGestures_OnFingerDown( int fingerIndex, Vector2 fingerPos ) {
 		GameObject selectedObject = PickGameObject(fingerPos);
-		if (selectedObject) {
+		if (selectedObject && !alligator.jumping) {
 			Letter letter = selectedObject.GetComponent<Letter>();
 			if (letter.letter == phoneme.letter) {
-				phoneme.PlayRewardClip();
+				StopCoroutine("SpeakPhoneme");
+				phoneme.PlayRewardClip(0.75f);
 				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-30);				
 				StartCoroutine("ClearCorrectLetter", letter);
 				
@@ -76,6 +77,8 @@ public class Director : MonoBehaviour {
 		yield return new WaitForSeconds(2.5f);
 		setupLetters();
 		setupPhoneme();
+		StartCoroutine("SpeakPhoneme");
+
 	}
 		
 	void clearLetters() {

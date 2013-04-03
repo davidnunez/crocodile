@@ -13,7 +13,7 @@ public class Phoneme : MonoBehaviour {
 	void Awake () {
 		voice = VOICES[1];
 		audioSource = Camera.mainCamera.GetComponent<AudioSource>();
-		rewardClip = Resources.Load("_sfx/jump") as AudioClip;
+		rewardClip = Resources.Load("_sfx/gulp") as AudioClip;
 
 	}
 	
@@ -46,8 +46,14 @@ public class Phoneme : MonoBehaviour {
 
 		
 	
-	public void PlayRewardClip() {
-		audioSource.PlayOneShot(rewardClip);
+	public void PlayRewardClip(float delay) {
+		StartCoroutine("DoPlayRewardClip", delay);
 	}
 
+	IEnumerator DoPlayRewardClip(float delay) {
+		yield return new WaitForSeconds(delay);
+		audioSource.PlayOneShot(rewardClip);
+	
+	}
+	
 }

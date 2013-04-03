@@ -8,7 +8,7 @@ public class alligator : MonoBehaviour {
 	public GameObject foot2;
 	public GameObject foot3;
 	public GameObject foot4;
-	
+	public bool jumping = false;
 	// Use this for initialization
 	void Start () {
 		bottom_jaw = transform.Find("Bottom Jaw").gameObject;
@@ -71,7 +71,7 @@ public class alligator : MonoBehaviour {
 	}
 	
 	IEnumerator DoJumpToPoint(float x, float y) {
-
+		jumping = true;
 		AnimateMouth(true, true);
 		iTween.RotateTo (gameObject, iTween.Hash ("z", -45, "time", 1.0f, "easetype", "easeInOutSine"));
 		iTween.MoveTo (gameObject, iTween.Hash ("x", x, "y", y, "time", 1.0f, "easetype", "easeInOutSine"));
@@ -103,7 +103,8 @@ public class alligator : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
 
-		
+		yield return new WaitForSeconds(1.0f);
+		jumping = false;
 	}
 
 	
