@@ -9,6 +9,8 @@ public class alligator : MonoBehaviour {
 	public GameObject foot3;
 	public GameObject foot4;
 	public bool jumping = false;
+	public RewardSprite rewardSprite;
+	
 	// Use this for initialization
 	void Start () {
 		bottom_jaw = transform.Find("Bottom Jaw").gameObject;
@@ -85,12 +87,21 @@ public class alligator : MonoBehaviour {
 
 		AnimateMouth(false,true);
 		
-		yield return new WaitForSeconds(0.25f);
+		rewardSprite.Drop();
+		
+		yield return new WaitForSeconds(0.75f);
+		
+		
+		
 		iTween.MoveTo (gameObject, iTween.Hash ("x", 200, "y", -600.0f, "time", 1.0f, "easetype", "easeInOutSine"));
 		iTween.RotateTo (gameObject, iTween.Hash ("z", 45, "time", 1.0f, "easetype", "easeInOutSine"));
 
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.5f);
 		
+		rewardSprite.Retract();
+		
+		yield return new WaitForSeconds(0.5f);
+
 		iTween.RotateTo (gameObject, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine"));
 		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", -600.0f, "time", 0f, "easetype", "easeInOutSine"));
 
