@@ -6,6 +6,7 @@ public class Director : MonoBehaviour {
 	public int numberOfLetters = 4;
 	public Letter[] letters;
 	public Phoneme phoneme;
+	public alligator alligator;
 	// Use this for initialization
 	void Awake () {
 		letters = new Letter[numberOfLetters];
@@ -31,6 +32,9 @@ public class Director : MonoBehaviour {
 			Letter letter = selectedObject.GetComponent<Letter>();
 			if (letter.letter == phoneme.letter) {
 				phoneme.PlayRewardClip();
+				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-30);				
+				StartCoroutine("ClearCorrectLetter", letter);
+				
 				clearLetters();
 				setupLetters();
 				setupPhoneme();
@@ -61,15 +65,20 @@ public class Director : MonoBehaviour {
 
 			go.renderer.material.mainTexture = tex;
 			
-			Debug.Log (textureName);
 			letters[i] = letter;
 		}
+	}
+	
+	IEnumerator ClearCorrectLetter(Letter letter) {
+		iTween.ScaleTo(letter.gameObject, iTween.Hash("x", 0, "y", 0, "delay", 0.75f, "time", 0.5f));
+		yield return new WaitForSeconds(1.5f);
+		Destroy(letter.gameObject);
 	}
 		
 	void clearLetters() {
 		for (int i = 0; i < numberOfLetters; i++) {	
-			if (letters[i]) {
-			Destroy(letters[i].gameObject);
+			if (letters[i] && letters[i].letter != phoneme.letter) {
+				letters[i].Fall();
 			}
 		}
 			

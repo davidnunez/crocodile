@@ -81,9 +81,11 @@ public class alligator : MonoBehaviour {
 		iTween.RotateTo (foot3, iTween.Hash ("z", 90, "time", 1.0f, "easetype", "easeInOutSine", "islocal", true));
 		iTween.RotateTo (foot4, iTween.Hash ("z", 90, "time", 1.0f, "easetype", "easeInOutSine", "islocal", true));
 
-		
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.75f);
+
 		AnimateMouth(false,true);
+		
+		yield return new WaitForSeconds(0.25f);
 		iTween.MoveTo (gameObject, iTween.Hash ("x", 200, "y", -600.0f, "time", 1.0f, "easetype", "easeInOutSine"));
 		iTween.RotateTo (gameObject, iTween.Hash ("z", 45, "time", 1.0f, "easetype", "easeInOutSine"));
 

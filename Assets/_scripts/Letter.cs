@@ -59,8 +59,6 @@ public class Letter : MonoBehaviour {
 	}
 
 	public void Fall() {
-		
-		Debug.Log ("FALL");
 		StartCoroutine("DoFall");
 	}
 	

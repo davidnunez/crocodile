@@ -29,7 +29,6 @@ public class Phoneme : MonoBehaviour {
 	public void setLetter(string l) {
 		letter = l;
 		audioClip = Resources.Load(voice + "/" + filename()) as AudioClip;
-		Debug.Log ("Setting phoneme mp3 to:" + voice +"/" +filename());
 	}
 	public void PlayClip() {
 		DoPlayClip (0);
