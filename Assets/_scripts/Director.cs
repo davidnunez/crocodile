@@ -35,10 +35,7 @@ public class Director : MonoBehaviour {
 				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-30);				
 				StartCoroutine("ClearCorrectLetter", letter);
 				
-				clearLetters();
-				setupLetters();
-				setupPhoneme();
-				phoneme.PlayClip(0.5f);
+				
 
 			} else {
 				phoneme.PlayClip();
@@ -70,9 +67,15 @@ public class Director : MonoBehaviour {
 	}
 	
 	IEnumerator ClearCorrectLetter(Letter letter) {
+		clearLetters();
+
 		iTween.ScaleTo(letter.gameObject, iTween.Hash("x", 0, "y", 0, "delay", 0.75f, "time", 0.5f));
 		yield return new WaitForSeconds(1.5f);
 		Destroy(letter.gameObject);
+		yield return new WaitForSeconds(2.5f);
+		setupLetters();
+		setupPhoneme();
+		phoneme.PlayClip(0.5f);
 	}
 		
 	void clearLetters() {
