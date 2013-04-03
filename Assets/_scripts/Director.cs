@@ -26,7 +26,7 @@ public class Director : MonoBehaviour {
 	void Start() {
 		setupLetters();
 		setupPhoneme();
-		phoneme.PlayClip();
+		StartCoroutine("SpeakPhoneme");
 	}
 	
 	void FingerGestures_OnFingerDown( int fingerIndex, Vector2 fingerPos ) {
@@ -41,12 +41,10 @@ public class Director : MonoBehaviour {
 				
 
 			} else {
-				phoneme.PlayClip();
 				letter.Fall();
 				//Destroy(selectedObject);
 			}
 		} else {
-			phoneme.PlayClip();
 		}
 		
 		
@@ -78,7 +76,6 @@ public class Director : MonoBehaviour {
 		yield return new WaitForSeconds(2.5f);
 		setupLetters();
 		setupPhoneme();
-		phoneme.PlayClip(0.5f);
 	}
 		
 	void clearLetters() {
@@ -93,7 +90,6 @@ public class Director : MonoBehaviour {
 	}
 	void setupPhoneme(){
 		phoneme.setLetter(letters[Random.Range(0, letters.Length)].letter);
-		phoneme.PlayClip();
 
 	}
 	
@@ -102,15 +98,24 @@ public class Director : MonoBehaviour {
 		
 	}
 	
-	        // utility method to raycast into the scene from the input screen position, looking for a rigidbody
-        GameObject PickGameObject( Vector2 screenPos )
-        {
-            Ray ray = Camera.main.ScreenPointToRay( screenPos );
-            RaycastHit hit;
+	// utility method to raycast into the scene from the input screen position, looking for a rigidbody
+    GameObject PickGameObject( Vector2 screenPos )
+    {
+        Ray ray = Camera.main.ScreenPointToRay( screenPos );
+        RaycastHit hit;
 
-            if( !Physics.Raycast( ray, out hit ) )
-                return null;
-            return hit.collider.gameObject;
-        }
+        if( !Physics.Raycast( ray, out hit ) )
+            return null;
+        return hit.collider.gameObject;
+    }
 	
+	IEnumerator SpeakPhoneme() {
+		while (true) {
+			alligator.AnimateMouthOpenClose();
+			phoneme.PlayClip();
+			yield return new WaitForSeconds(2.0f);
+		}
+		
+	}
+
 }

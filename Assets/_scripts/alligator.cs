@@ -46,7 +46,7 @@ public class alligator : MonoBehaviour {
 		}
 	}
 	
-	void AnimateMouthOpenClose() {
+	public void AnimateMouthOpenClose() {
 		iTween.RotateTo(bottom_jaw, iTween.Hash("z", 0.0f, "time", 0.25f, "easetype", "easeInOutSine", "islocal", true));	
 		iTween.RotateTo(bottom_jaw, iTween.Hash("z", -12.0f, "delay", 0.25f, "time", 0.25f, "easetype", "easeInOutSine", "islocal", true));	
 	}
@@ -101,7 +101,7 @@ public class alligator : MonoBehaviour {
 
 		
 		yield return new WaitForSeconds(1.0f);
-		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 74.00385f, "time", 1.0f, "easetype", "easeInOutSine"));
+		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
 
 		
 	}
