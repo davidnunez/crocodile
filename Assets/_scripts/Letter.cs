@@ -32,6 +32,8 @@ public class Letter : MonoBehaviour {
 	public float lerpTime  = 10.0f; // This is the number of seconds the Lerp will take
 	public Vector3 start;
 	public Vector3 end; 
+	
+	public float speedFactor = 1.0f;
 
 	
 	// LetterSet[] letterSets; // TODO: Implement Letter Set
@@ -44,7 +46,7 @@ public class Letter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    lerpPosition += Time.deltaTime/lerpTime;
+	    lerpPosition += Time.deltaTime/lerpTime/speedFactor;
     	transform.position = Vector3.Lerp(start,end,lerpPosition);
 	
 	}	

@@ -36,13 +36,18 @@ public class Director : MonoBehaviour {
 			if (letter.letter == phoneme.letter) {
 				StopCoroutine("SpeakPhoneme");
 				phoneme.PlayRewardClip(0.75f);
-				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-30);				
+				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-(30.0f / letter.speedFactor));				
 				StartCoroutine("ClearCorrectLetter", letter);
 				
 				
 
 			} else {
 				letter.Fall();
+				for (int i = 0; i < numberOfLetters; i++) {		
+					if (letters[i] && letters[i].letter != letter.letter) {
+						letters[i].speedFactor -= 0.3f;
+					}
+				}
 				//Destroy(selectedObject);
 			}
 		} else {
