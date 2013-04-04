@@ -35,7 +35,7 @@ public class Letter : MonoBehaviour {
 	
 	public float speedFactor = 1.0f;
 
-	
+	public bool stopped = false;
 	// LetterSet[] letterSets; // TODO: Implement Letter Set
 	
 	// Use this for initialization
@@ -46,9 +46,10 @@ public class Letter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    lerpPosition += Time.deltaTime/lerpTime/speedFactor;
-    	transform.position = Vector3.Lerp(start,end,lerpPosition);
-	
+	    if (!stopped) {
+			lerpPosition += Time.deltaTime/lerpTime/speedFactor;
+    		transform.position = Vector3.Lerp(start,end,lerpPosition);
+		}	
 	}	
 	
 	public void Randomize() {// will need to make this function more robust / customizable
