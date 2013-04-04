@@ -34,9 +34,12 @@ public class Director : MonoBehaviour {
 		if (selectedObject && !alligator.jumping) {
 			Letter letter = selectedObject.GetComponent<Letter>();
 			if (letter.letter == phoneme.letter) {
+				letter.stopped = true;
 				StopCoroutine("SpeakPhoneme");
 				phoneme.PlayRewardClip(0.75f);
-				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-(30.0f / letter.speedFactor));				
+				//alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-(30.0f / letter.speedFactor));
+				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y+30);				
+
 				StartCoroutine("ClearCorrectLetter", letter);
 				
 				
