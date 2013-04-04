@@ -86,7 +86,12 @@ public class Director : MonoBehaviour {
 	}
 
 	void NextRound() {
-		clearLetters();
+		for (int i = 0; i < numberOfLetters; i++) {	
+			if (letters[i]) {
+				letters[i].Fall();
+			}
+		}
+		
 		setupLetters();
 		setupPhoneme();
 		StartCoroutine("SpeakPhoneme");	
