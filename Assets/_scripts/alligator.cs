@@ -53,8 +53,8 @@ public class alligator : MonoBehaviour {
 		iTween.RotateTo(bottom_jaw, iTween.Hash("z", -12.0f, "delay", 0.25f, "time", 0.25f, "easetype", "easeInOutSine", "islocal", true));	
 	}
 	
-	public void JumpToPoint(float x, float y) {
-		StartCoroutine(DoJumpToPoint(x,y));	
+	public void JumpToPoint(float x, float y, bool swimOff) {
+		StartCoroutine(DoJumpToPoint(x,y, swimOff));	
 	}
 	
 	
@@ -72,7 +72,7 @@ public class alligator : MonoBehaviour {
 		}
 	}
 	
-	IEnumerator DoJumpToPoint(float x, float y) {
+	IEnumerator DoJumpToPoint(float x, float y, bool swimOff) {
 		jumping = true;
 		AnimateMouth(true, true);
 		iTween.RotateTo (gameObject, iTween.Hash ("z", -45, "time", 1.0f, "easetype", "easeInOutSine"));
@@ -109,19 +109,32 @@ public class alligator : MonoBehaviour {
 		iTween.RotateTo (foot2, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine", "islocal", true));
 		iTween.RotateTo (foot3, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine", "islocal", true));
 		iTween.RotateTo (foot4, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine", "islocal", true));
-
 		
-		yield return new WaitForSeconds(1.0f);
-		iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
+		if (!swimOff) {
+		
+			yield return new WaitForSeconds(1.0f);
+			iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
 
-		yield return new WaitForSeconds(1.0f);
-		jumping = false;
+			yield return new WaitForSeconds(1.0f);
+			jumping = false;
+		} else {
+			iTween.RotateTo (gameObject, iTween.Hash ("y", -180.0f, "z", -10.0f, "time", 0f, "easetype", "easeInOutSine"));
+			iTween.MoveTo (gameObject, iTween.Hash ("x", 200.0f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
+			yield return new WaitForSeconds(1.0f);
+			iTween.MoveTo (gameObject, iTween.Hash ("x", 1816.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
+			yield return new WaitForSeconds(1.0f);
+			iTween.RotateTo (gameObject, iTween.Hash ("y", 0, "z", 0, "x", 0, "time", 0f, "easetype", "easeInOutSine"));
+			yield return new WaitForSeconds(1.0f);
+			jumping = false;
+			
+		}
+		
 	}
 
 	
 	void FingerGestures_OnFingerDown( int fingerIndex, Vector2 fingerPos ) {
 		Debug.Log ("OnFingerDown: x=" + fingerPos.x + ", y=" + fingerPos.y);
-		JumpToPoint(fingerPos.x, fingerPos.y);
+		JumpToPoint(fingerPos.x, fingerPos.y, true);
 		
 		
 	}
