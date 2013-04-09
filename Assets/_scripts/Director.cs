@@ -4,7 +4,7 @@ using System.Collections;
 public class Director : MonoBehaviour {
 	
 
-	int[] validLetters = {2,4,6,12,13,14,16,19,20};
+	public int[] validLetters = {2,4,6,12,13,14,16,19,20};
 
 	public int numberOfLetters = 4;
 	public Letter[] letters;
