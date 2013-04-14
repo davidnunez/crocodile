@@ -231,6 +231,8 @@ public class alligator : MonoBehaviour {
 			iTween.MoveTo (gameObject, iTween.Hash ("x", 1816.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
 			yield return new WaitForSeconds(1.0f);
 			iTween.RotateTo (gameObject, iTween.Hash ("y", 0, "z", 0, "x", 0, "time", 0f, "easetype", "easeInOutSine"));
+			iTween.MoveTo (gameObject, iTween.Hash ("x", 1016.078f, "y", 120.0f, "time", 1.0f, "easetype", "easeInOutSine"));
+
 			yield return new WaitForSeconds(1.0f);
 			jumping = false;
 			
