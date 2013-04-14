@@ -2,25 +2,65 @@ using UnityEngine;
 using System.Collections;
 
 public class alligator : MonoBehaviour {
+    public enum AlligatorColors {blue, green, pink, red, yellow};
+	public AlligatorColors alligatorColor;
+	
+	public GameObject body;
 	public GameObject bottom_jaw;
 	public GameObject top_jaw;
 	public GameObject foot1;
 	public GameObject foot2;
 	public GameObject foot3;
 	public GameObject foot4;
+	public GameObject neck_piece;
+	public GameObject tail_1;
+	public GameObject tail;
+	
 	public bool jumping = false;
 	public RewardSprite rewardSprite;
 	
+	public tk2dSprite body_sprite;
+	private tk2dSprite bottom_jaw_sprite;
+	private tk2dSprite top_jaw_sprite;
+	private tk2dSprite foot1_sprite;
+	private tk2dSprite foot2_sprite;
+	private tk2dSprite foot3_sprite;
+	private tk2dSprite foot4_sprite;
+	private tk2dSprite neck_piece_sprite;
+	public tk2dSprite tail_1_sprite;
+	public tk2dSprite tail_sprite;
+	
+	void Awake() {
+//		body = transform.Find ("Body").gameObject;
+//		bottom_jaw = transform.Find("Bottom Jaw").gameObject;
+//		top_jaw = transform.Find ("Top Jaw").gameObject;
+		
+//		foot1 = transform.Find ("Foot 1").gameObject;
+//		foot2 = transform.Find ("Foot 2").gameObject;
+//		foot3 = transform.Find ("Foot 3").gameObject;
+//		foot4 = transform.Find ("Foot 4").gameObject;
+		
+//		neck_piece = transform.Find("Neck Piece").gameObject;
+//		tail_1 = transform.Find("Tail 1").gameObject;
+//		tail = transform.FindChild ("Tail").gameObject;
+	}
+	
+	
 	// Use this for initialization
 	void Start () {
-		bottom_jaw = transform.Find("Bottom Jaw").gameObject;
-		top_jaw = transform.Find ("Top Jaw").gameObject;
-		
-		foot1 = transform.Find ("Foot 1").gameObject;
-		foot2 = transform.Find ("Foot 2").gameObject;
-		foot3 = transform.Find ("Foot 3").gameObject;
-		foot4 = transform.Find ("Foot 4").gameObject;
 
+		
+		body_sprite = body.GetComponent<tk2dSprite>();
+		bottom_jaw_sprite = bottom_jaw.GetComponent<tk2dSprite>();
+		top_jaw_sprite = top_jaw.GetComponent<tk2dSprite>();
+		foot1_sprite = foot1.GetComponent<tk2dSprite>();
+		foot2_sprite = foot2.GetComponent<tk2dSprite>();
+		foot3_sprite = foot3.GetComponent<tk2dSprite>();
+		foot4_sprite = foot4.GetComponent<tk2dSprite>();
+		neck_piece_sprite = neck_piece.GetComponent<tk2dSprite>();
+		tail_1_sprite = tail_1.GetComponent<tk2dSprite>();
+		tail_sprite = tail.GetComponent<tk2dSprite>();
+		
 		
 		
 		
@@ -37,7 +77,74 @@ public class alligator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+	}
 	
+	void LateUpdate() {
+		switch(alligatorColor) {		
+			case AlligatorColors.green:
+				body_sprite.SetSprite("green_body");
+				bottom_jaw_sprite.SetSprite("green_bottom jaw");
+				top_jaw_sprite.SetSprite("green_top jaw");
+				foot1_sprite.SetSprite("green_foot 1");
+				foot2_sprite.SetSprite("green_foot 2");
+				foot3_sprite.SetSprite("green_foot 3");
+				foot4_sprite.SetSprite("green_foot 4");
+				neck_piece_sprite.SetSprite("green_neck piece");
+				tail_1_sprite.SetSprite("green_tail 1");
+				tail_sprite.SetSprite("green_tail 2");
+				break;
+			case AlligatorColors.blue:
+				body_sprite.SetSprite("blue_body");
+				bottom_jaw_sprite.SetSprite("blue_bottom jaw");
+				top_jaw_sprite.SetSprite("blue_top jaw");
+				foot1_sprite.SetSprite("blue_foot 1");
+				foot2_sprite.SetSprite("blue_foot 2");
+				foot3_sprite.SetSprite("blue_foot 3");
+				foot4_sprite.SetSprite("blue_foot 4");
+				neck_piece_sprite.SetSprite("blue_neck piece");
+				tail_1_sprite.SetSprite("blue_tail 1");
+				tail_sprite.SetSprite("blue_tail 2");
+				break;
+			case AlligatorColors.pink:
+				body_sprite.SetSprite("pink_body");
+				bottom_jaw_sprite.SetSprite("pink_bottom jaw");
+				top_jaw_sprite.SetSprite("pink_top jaw");
+				foot1_sprite.SetSprite("pink_foot 1");
+				foot2_sprite.SetSprite("pink_foot 2");
+				foot3_sprite.SetSprite("pink_foot 3");
+				foot4_sprite.SetSprite("pink_foot 4");
+				neck_piece_sprite.SetSprite("pink_neck piece");
+				tail_1_sprite.SetSprite("pink_tail 1");
+				tail_sprite.SetSprite("pink_tail 2");
+				break;
+			case AlligatorColors.red:
+				body_sprite.SetSprite("redbody");
+				bottom_jaw_sprite.SetSprite("redbottom jaw");
+				top_jaw_sprite.SetSprite("redtop jaw");
+				foot1_sprite.SetSprite("redfoot 1");
+				foot2_sprite.SetSprite("redfoot 2");
+				foot3_sprite.SetSprite("redfoot 3");
+				foot4_sprite.SetSprite("redfoot 4");
+				neck_piece_sprite.SetSprite("redneck piece");
+				tail_1_sprite.SetSprite("redtail 1");
+				tail_sprite.SetSprite("redtail 2");
+				break;
+			case AlligatorColors.yellow:
+
+				body_sprite.SetSprite("yellow_body");
+				bottom_jaw_sprite.SetSprite("yellow_bottom jaw");
+				top_jaw_sprite.SetSprite("yellow_top jaw");
+				foot1_sprite.SetSprite("yellow_foot 1");
+				foot2_sprite.SetSprite("yellow_foot 2");
+				foot3_sprite.SetSprite("yellow_foot 3");
+				foot4_sprite.SetSprite("yellow_foot 4");
+				neck_piece_sprite.SetSprite("yellow_neck piece");
+				tail_1_sprite.SetSprite("yellow_tail 1");
+				tail_sprite.SetSprite("yellow_tail 2");
+				break;			
+		}
+		
 	}
 	
 	IEnumerator LoopAnimateMouthOpenClose() {
