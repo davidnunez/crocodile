@@ -19,7 +19,7 @@ public class alligator : MonoBehaviour {
 	public bool jumping = false;
 	public RewardSprite rewardSprite;
 	
-	public tk2dSprite body_sprite;
+	private tk2dSprite body_sprite;
 	private tk2dSprite bottom_jaw_sprite;
 	private tk2dSprite top_jaw_sprite;
 	private tk2dSprite foot1_sprite;
@@ -27,8 +27,8 @@ public class alligator : MonoBehaviour {
 	private tk2dSprite foot3_sprite;
 	private tk2dSprite foot4_sprite;
 	private tk2dSprite neck_piece_sprite;
-	public tk2dSprite tail_1_sprite;
-	public tk2dSprite tail_sprite;
+	private tk2dSprite tail_1_sprite;
+	private tk2dSprite tail_sprite;
 	
 	void Awake() {
 //		body = transform.Find ("Body").gameObject;
