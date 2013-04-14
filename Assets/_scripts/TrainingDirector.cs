@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Director : MonoBehaviour {
+public class TrainingDirector : MonoBehaviour {
 	
 
 	public int[] validLetters = {2,4,6,12,13,14,16,19,20};
@@ -11,10 +11,10 @@ public class Director : MonoBehaviour {
 	public Phoneme phoneme;
 	public alligator alligator;
 	// Use this for initialization
+	
+	
+	
 	void Awake () {
-		if (letters.Length == 0) {
-			letters = new Letter[numberOfLetters];
-		}
 		GameObject phonemeObject = (GameObject)Instantiate (Resources.Load ("_prefabs/PhonemePrefab"));
 		phoneme = phonemeObject.GetComponent<Phoneme>();
 	}
@@ -39,42 +39,36 @@ public class Director : MonoBehaviour {
 				StopCoroutine("SpeakPhoneme");
 				phoneme.PlayRewardClip(0.75f);
 				//alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y-(30.0f / letter.speedFactor));
-				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y+30, true);				
-
-				StartCoroutine("ClearCorrectLetter", letter);
+				alligator.JumpToPoint(letter.gameObject.transform.position.x-50, letter.gameObject.transform.position.y+30, false, false);				
 				
-				
+				iTween.MoveBy(letter.gameObject, iTween.Hash("x", 500, "delay", 0.5f));
+				//StartCoroutine("ClearCorrectLetter", letter);
+				StartCoroutine("DoNextLevel");
 
 			} else {
-				letter.Fall();
-				for (int i = 0; i < numberOfLetters; i++) {		
-					if (letters[i] && letters[i].letter != letter.letter) {
-						letters[i].speedFactor -= 0.3f;
-					}
-				}
-				//Destroy(selectedObject);
+	
 			}
 		} else {
 		}
 		
 		
 	}
+	
+	IEnumerator DoNextLevel() {
+		yield return new WaitForSeconds(3.0f);
+		Application.LoadLevel("Scene_01");
+
+	}
 
 	void setupLetters() {
-		Shuffle(validLetters);
-		
+				
 		for (int i = 0; i < numberOfLetters; i++) {		
-			Vector3 newPosition = new Vector3(200+200*i, 900, 0);
-			
-			GameObject go = (GameObject)Instantiate (Resources.Load ("_prefabs/LetterPrefab"), newPosition,Quaternion.identity);	
-			Letter letter = go.GetComponent<Letter>();			
-			letter.SetLetter(validLetters[i]);			
-			string textureName = "font_sets/" + letter.typeface + "/" + letter.filename();
+			letters[i].SetLetter(16);			
+			string textureName = "font_sets/" + letters[i].typeface + "/" + letters[i].filename();
 			
 			Texture2D tex = Resources.Load(textureName) as Texture2D;
 
-			go.renderer.material.mainTexture = tex;
-			letters[i] = letter;
+			letters[i].gameObject.renderer.material.mainTexture = tex;
 		}
 	}
 	
@@ -119,18 +113,7 @@ public class Director : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for (int i = 0; i < numberOfLetters; i++) {	
-			if (letters[i] && letters[i].letter == phoneme.letter) {
-				if (letters[i].lerpPosition > 1.0f) {
-					Debug.Log ("FAILED");	
-					StopCoroutine("SpeakPhoneme");
-					alligator.Dunk();
-					phoneme.PlayFailClip();
 
-					NextRound();
-				}
-			}
-		}
 	}
 	
 	// utility method to raycast into the scene from the input screen position, looking for a rigidbody

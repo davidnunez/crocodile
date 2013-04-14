@@ -160,8 +160,8 @@ public class alligator : MonoBehaviour {
 		iTween.RotateTo(bottom_jaw, iTween.Hash("z", -12.0f, "delay", 0.25f, "time", 0.25f, "easetype", "easeInOutSine", "islocal", true));	
 	}
 	
-	public void JumpToPoint(float x, float y, bool swimOff) {
-		StartCoroutine(DoJumpToPoint(x,y, swimOff));	
+	public void JumpToPoint(float x, float y, bool swimOff, bool reset=true) {
+		StartCoroutine(DoJumpToPoint(x,y, swimOff, reset));	
 	}
 	
 	
@@ -179,7 +179,7 @@ public class alligator : MonoBehaviour {
 		}
 	}
 	
-	IEnumerator DoJumpToPoint(float x, float y, bool swimOff) {
+	IEnumerator DoJumpToPoint(float x, float y, bool swimOff, bool reset=true) {
 		jumping = true;
 		AnimateMouth(true, true);
 		iTween.RotateTo (gameObject, iTween.Hash ("z", -45, "time", 1.0f, "easetype", "easeInOutSine"));
@@ -194,7 +194,7 @@ public class alligator : MonoBehaviour {
 
 		AnimateMouth(false,true);
 		
-		rewardSprite.Drop();
+		//rewardSprite.Drop();
 		
 		yield return new WaitForSeconds(0.75f);
 		
@@ -205,7 +205,7 @@ public class alligator : MonoBehaviour {
 
 		yield return new WaitForSeconds(0.5f);
 		
-		rewardSprite.Retract();
+		//rewardSprite.Retract();
 		
 		yield return new WaitForSeconds(0.5f);
 
@@ -216,7 +216,7 @@ public class alligator : MonoBehaviour {
 		iTween.RotateTo (foot2, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine", "islocal", true));
 		iTween.RotateTo (foot3, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine", "islocal", true));
 		iTween.RotateTo (foot4, iTween.Hash ("z", 0, "time", 0f, "easetype", "easeInOutSine", "islocal", true));
-		
+		if (reset) {
 		if (!swimOff) {
 		
 			yield return new WaitForSeconds(1.0f);
@@ -236,6 +236,7 @@ public class alligator : MonoBehaviour {
 			yield return new WaitForSeconds(1.0f);
 			jumping = false;
 			
+		}
 		}
 		
 	}
