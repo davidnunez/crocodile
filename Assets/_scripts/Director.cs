@@ -25,6 +25,8 @@ public class Director : MonoBehaviour {
         FingerGestures.OnFingerDown -= FingerGestures_OnFingerDown;
 	}	
 	void Start() {
+		Funf.Log ("\"app\":\"crocodile\",\"type\",\"start\"");
+
 		setupLetters();
 		setupPhoneme();
 		StartCoroutine("SpeakPhoneme");
@@ -35,6 +37,8 @@ public class Director : MonoBehaviour {
 		if (selectedObject && !alligator.jumping) {
 			Letter letter = selectedObject.GetComponent<Letter>();
 			if (letter.letter == phoneme.letter) {
+				Funf.Log ("\"app\":\"crocodile\",\"type\",\"correct\",\"letter\",\""+ letter.letter + "\"");
+
 				letter.stopped = true;
 				StopCoroutine("SpeakPhoneme");
 				phoneme.PlayRewardClip(0.75f);
@@ -46,6 +50,8 @@ public class Director : MonoBehaviour {
 				
 
 			} else {
+				Funf.Log ("\"app\":\"crocodile\",\"type\",\"incorrect\",\"letter\",\""+ letter.letter + "\"");
+
 				letter.Fall();
 				for (int i = 0; i < numberOfLetters; i++) {		
 					if (letters[i] && letters[i].letter != letter.letter) {
@@ -76,6 +82,13 @@ public class Director : MonoBehaviour {
 			go.renderer.material.mainTexture = tex;
 			letters[i] = letter;
 		}
+		
+		string choices = "";
+		for (int i = 0; i < numberOfLetters; i++) {		
+			choices = choices + letters[i].letter;
+		}
+		Funf.Log ("\"app\":\"crocodile\",\"type\",\"setupLetters\",\"choics\",\""+ choices + "\"");
+
 	}
 	
 	IEnumerator ClearCorrectLetter(Letter letter) {
@@ -114,6 +127,8 @@ public class Director : MonoBehaviour {
 	}
 	void setupPhoneme(){
 		phoneme.setLetter(letters[Random.Range(0, letters.Length)].letter);
+		
+		Funf.Log ("\"app\":\"crocodile\",\"type\",\"prompt\",\"letter\",\""+ phoneme.letter + "\"");
 
 	}
 	
@@ -126,6 +141,7 @@ public class Director : MonoBehaviour {
 					StopCoroutine("SpeakPhoneme");
 					alligator.Dunk();
 					phoneme.PlayFailClip();
+					Funf.Log ("\"app\":\"crocodile\",\"type\",\"failed\"");
 
 					NextRound();
 				}
